@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Kelas 8</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(rgba(30, 30, 47, 0.5), rgba(30, 30, 47, 0.8)), 
+                  url('good.jpg') no-repeat center center/cover;
+      color: #fff;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+
+    /* Sidebar/Navbar Styles */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #2d2d44;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Sidebar tersembunyi di awal */
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+      align-items: center;
+    }
+
+    .sidebar.open {
+      left: 0; /* Munculkan sidebar */
+    }
+
+    .sidebar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6e8efb, #a777e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+      font-size: 1.2rem;
+      color: #fff;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: block;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .sidebar ul li a:hover {
+      background: #6e8efb;
+      transform: scale(1.05);
+    }
+
+    /* Menu Toggle Button (Hamburger) */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1002;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+    }
+
+    /* Content Section */
+    .content {
+      margin-left: 0;
+      padding: 20px;
+      margin-top: 80px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #2d2d44;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      font-family: 'Times New Roman', serif;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+     .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(110, 142, 251, 0.6);
+    }
+    .container img {
+      margin: 20px 0;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Keterangan Rumus dan Macam-Macam Peluang */
+    .container ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .container ul li {
+      margin: 10px 0;
+    }
+
+    .container p {
+      font-size: 1.2rem;
+      color: #ddd;
+      text-align: left; /* Menjadikan teks rata kiri */
+      margin-bottom: 20px; /* Memberikan jarak antara paragraf */
+   
+    }
+   
+    .container h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #6e8efb, #a777e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .container h2 {
+      font-size: 2rem;
+      color: #6e8efb;
+      border-bottom: 2px solid #6e8efb;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .container h2, .container h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+    .container p {
+      font-size: 1.2rem;
+      color: #ddd;
+      text-align: left;
+    }
+
+    .formula-container {
+      background: #1f1f30;
+      max-width: 250px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      color: #a777e3;
+      text-align: center;
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+    
+    /* Modul Ajar PDF */
+.pdf-container {
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.pdf-container iframe {
+  width: 90%;
+  height: 480px; /* Bisa disesuaikan dengan preferensi */
+}
+
+/* Untuk tampilan di perangkat mobile */
+@media (max-width: 768px) {
+  .pdf-container iframe {
+    height: 320px; /* Menyesuaikan tinggi untuk layar lebih kecil */
+  }
+}
+
+
+/* Video YouTube */
+.video-container {
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.video-container iframe {
+  width: 90%;
+  height: 400px; /* Ukuran video yang responsif */
+}
+
+/* Untuk tampilan di perangkat mobile */
+@media (max-width: 768px) {
+  .pdf-container embed {
+    height: 400px; /* Menyesuaikan tinggi untuk layar lebih kecil */
+  }
+
+  .video-container iframe {
+    height: 200px; /* Menyesuaikan tinggi video di layar kecil */
+  }
+}
+
+    /* Footer Styles */
+    footer {
+      background: #2d2d44;
+      padding: 20px 0;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+      margin-top: auto; /* Tetapkan footer di bagian bawah */
+    }
+
+    footer a {
+      color: #6e8efb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Sidebar/Navbar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">PELUANG</div>
+    <ul>
+      <li><a href="berandaa.html">Beranda</a></li>
+      <li><a href="tentangg.html">Materi</a></li>
+      <li><a href="coso.html">Contoh </a></li>
+      <li><a href="sohan.html">Latihan</a></li>
+      <li><a href="kupe.html">Kuis</a></li>
+      <li><a href="about.html">About</a></li>
+  </ul>
+    </ul>
+  </div>
+
+  <!-- Menu Toggle Button (Hamburger) -->
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <div class="container">
+      <h1>MATERI PELUANG</h1>
+      <img src="keren.jpg" alt="Ilustrasi peluang" />
+
+      <!-- YouTube Video -->
+  <h2><br>Video Pembelajaran</br></h2>
+  <p><strong>Halo!</strong> Sebelum kita memulai pembelajaran hari ini, mari kita saksikan sebuah video terlebih dahulu. Video ini akan memberikan gambaran yang menarik dan mudah dipahami mengenai materi peluang yang akan kita pelajari. Dalam video ini terdapat penjelasan-penjelasan penting yang akan mendukung pemahaman kalian dan membuat pembelajaran menjadi lebih interaktif. Jangan lupa untuk mencatat poin-poin penting yang disampaikan, karena kita akan mendiskusikannya lebih lanjut setelah menonton. Mari kita mulai!</p>
+  <div class="video-container">
+    <iframe width="80%" height="400" src="https://www.youtube.com/embed/TYV87PhZyUM?si=90QvKL4iOnDpDc1T"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
+  </div>
+
+
+      <h2>Pengertian Peluang</h2>
+      <p>
+        <strong>Peluang</strong> adalah suatu cara untuk mengukur kemungkinan terjadinya suatu peristiwa. Nilai peluang selalu berada di antara 0 dan 1. Jika peluang suatu peristiwa adalah 0, maka peristiwa tersebut tidak mungkin terjadi. Jika peluang suatu peristiwa adalah 1, maka peristiwa tersebut pasti terjadi.
+      </p>
+
+      <!-- Rumus Dasar Peluang -->
+<h2>Rumus Dasar Peluang</h2>
+<p>
+  Rumus dasar untuk menghitung peluang suatu kejadian adalah:
+</p>
+<div class="formula-container">
+  \[ P(A) = \frac{n(A)}{n(S)} \]
+</div>
+<p>
+  <br>Keterangan:</br>
+</p>
+<ul>
+  <li><strong>P(A)</strong> : Peluang kejadian A</li>
+  <li><strong>n(A)</strong> : Banyaknya hasil yang mendukung kejadian A</li>
+  <li><strong>n(S)</strong> : Banyaknya hasil dalam ruang sampel</li>
+</ul>
+
+<h2>Ruang Sampel</h2>
+<p>
+  <strong>Ruang sampel</strong> adalah himpunan semua kemungkinan hasil dari suatu percobaan atau peristiwa. Dalam probabilitas, ruang sampel digunakan untuk menentukan semua hasil yang mungkin terjadi dalam suatu eksperimen. Misalnya, jika kita melempar sebuah koin, ruang sampelnya adalah {kepala, ekor}.
+</p>
+
+<h3>Contoh Ruang Sampel</h3>
+<p>
+  Misalkan kita melempar dua buah koin sekaligus. Ruang sampelnya adalah:
+</p>
+<div class="formula-container">
+  \[ S = \{ \text{KK}, \text{KE}, \text{EK}, \text{EE} \} \]
+</div>
+<p>
+  Keterangan:
+</p>
+<ul>
+  <li><strong>KK</strong> : Kepala di koin pertama dan Kepala di koin kedua</li>
+  <li><strong>KE</strong> : Kepala di koin pertama dan Ekor di koin kedua</li>
+  <li><strong>EK</strong> : Ekor di koin pertama dan Kepala di koin kedua</li>
+  <li><strong>EE</strong> : Ekor di koin pertama dan Ekor di koin kedua</li>
+</ul>
+
+<h3>Rumus Ruang Sampel</h3>
+<p>
+  Untuk menghitung jumlah kemungkinan hasil dalam ruang sampel, kita dapat menggunakan rumus kombinasi atau permutasi tergantung pada situasi eksperimen.
+</p>
+
+
+<!-- Macam-Macam Peluang -->
+<h2>Macam-Macam Peluang</h2>
+<p>
+  Ada beberapa macam peluang yang perlu diketahui:
+</p>
+<ul>
+  <li><strong>Peluang Empiris</strong>: Peluang yang diperoleh berdasarkan hasil pengamatan atau percobaan.</li>
+  <li><strong>Peluang Teoretis</strong>: Peluang yang diperoleh melalui perhitungan berdasarkan kemungkinan hasil yang ada.</li>
+</ul>
+
+<h2>Modul Ajar</h2>
+
+<!-- PDF Modul Ajar -->
+
+<p>Untuk memahami materi tentang peluang secara lebih mendalam, mari kita simak modul ajar yang telah disiapkan di bawah ini. Modul ini akan membantu Anda memahami konsep-konsep penting dan memberikan panduan yang jelas untuk setiap bagian materi. Berikut adalah Modul Ajar mengenai materi peluang:</p>
+
+<div class="pdf-container">
+  <iframe src="https://drive.google.com/file/d/1uGY1PJSIHTpH2Z4beWYb1cgNaQWS04gB/preview" width="80%" height="480" allow="autoplay"></iframe>
+</div>
+     
+      
+      </div>
+    </div>
+  
+    <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Peluang Kelas 8. Dibuat oleh <a href="about.html">Hartati Rintan (E1R022052)</a>.</p>
+  </footer>
+  
+  </body>
+  </html>
+  

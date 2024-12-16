@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Kelas 8</title>
+  <style>
+    /* Global Styles */
+    body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(30, 30, 47, 0.5), rgba(30, 30, 47, 0.8)), 
+              url('good.jpg') no-repeat center center/cover;
+  color: #fff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}  
+
+    h1, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+ /* Sidebar/Navbar Styles */
+ .sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #2d2d44;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 20px 20px; /* Padding untuk memberi ruang pada logo */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  box-sizing: border-box;
+  align-items: center; /* Menengahkan elemen-elemen di dalam sidebar secara horizontal */
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px; /* Jarak antara logo dan menu */
+  background: linear-gradient(90deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid #fff; /* Garis pembatas bawah logo */
+  padding-bottom: 15px; /* Memberikan ruang setelah garis pembatas */
+  text-align: center; /* Menengahkan teks di dalam logo */
+  width: 100%; /* Memastikan logo mengisi lebar penuh sidebar */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: block;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sidebar ul li a:hover {
+  background: #6e8efb;
+  transform: scale(1.05);
+}
+ /* Sidebar/Navbar Styles */
+ .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #2d2d44;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Sidebar tersembunyi di awal */
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0; /* Munculkan sidebar */
+    }
+
+    /* Menu Toggle Button (Hamburger) */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1002;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+    }
+
+    /* Content Section */
+    .content {
+      margin-left: 0;
+      padding: 20px;
+      margin-top: 80px;
+      text-align: center;
+      flex: 1; /* Agar content mengisi ruang yang tersedia */
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #2d2d44;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(110, 142, 251, 0.6);
+    }
+
+    .container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6e8efb, #a777e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+
+    .container p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ddd;
+      text-align: justify; /* Menambahkan properti ini untuk meratakan teks kiri dan kanan */
+    }
+    
+    .container img {
+      margin: 20px 0;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #2d2d44;
+      padding: 20px 0;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+      margin-top: auto; /* Tetapkan footer di bagian bawah */
+    }
+
+    footer a {
+      color: #6e8efb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar/Navbar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">PELUANG</div>
+    <ul>
+      <li><a href="berandaa.html">Beranda</a></li>
+      <li><a href="tentangg.html">Materi</a></li>
+      <li><a href="coso.html">Contoh </a></li>
+      <li><a href="sohan.html">Latihan</a></li>
+      <li><a href="kupe.html">Kuis</a></li>
+      <li><a href="about.html">About</a></li>
+  </ul>
+    </ul>
+  </div>
+
+  <!-- Menu Toggle Button (Hamburger) -->
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+   <!-- Content Section -->
+  <div class="content">
+    <div class="container">
+      <h1>PELUANG KELAS 8</h1>
+      <img src="as.png" alt="Ilustrasi peluang" />
+      <p>
+        <br>Selamat datang di materi peluang kelas 8. Di sini Anda dapat menemukan berbagai materi, contoh soal, latihan, dan kuis untuk memahami konsep peluang dengan lebih baik. Peluang merupakan salah satu cabang matematika yang sangat menarik karena melibatkan penghitungan kemungkinan suatu kejadian terjadi.</br>
+      </p>
+      <p>
+        Apakah Anda pernah berpikir tentang peluang menang dalam suatu permainan? Yuk, pelajari lebih dalam dan temukan jawabannya di sini!
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Peluang Kelas 8. Dibuat oleh <a href="about.html">Hartati Rintan (E1R022052)</a>.</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

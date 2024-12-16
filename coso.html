@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Kelas 8</title>
+  <style>
+    /* Global Styles */
+    body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(30, 30, 47, 0.7), rgba(30, 30, 47, 0.8)), 
+              url('good.jpg') no-repeat center center/cover;
+  color: #fff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}  
+
+    h1, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+ /* Sidebar/Navbar Styles */
+ .sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #2d2d44;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 20px 20px; /* Padding untuk memberi ruang pada logo */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  box-sizing: border-box;
+  align-items: center; /* Menengahkan elemen-elemen di dalam sidebar secara horizontal */
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px; /* Jarak antara logo dan menu */
+  background: linear-gradient(90deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid #fff; /* Garis pembatas bawah logo */
+  padding-bottom: 15px; /* Memberikan ruang setelah garis pembatas */
+  text-align: center; /* Menengahkan teks di dalam logo */
+  width: 100%; /* Memastikan logo mengisi lebar penuh sidebar */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: block;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sidebar ul li a:hover {
+  background: #6e8efb;
+  transform: scale(1.05);
+}
+ /* Sidebar/Navbar Styles */
+ .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #2d2d44;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Sidebar tersembunyi di awal */
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0; /* Munculkan sidebar */
+    }
+
+    /* Menu Toggle Button (Hamburger) */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1002;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+    }
+
+     /* Content Section */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      margin-top: 80px;
+      text-align: left;
+      flex: 1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #2d2d44;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    /* Tambahkan ini ke bagian CSS yang sudah ada */
+    .content {
+  margin-left: 0; /* Hapus margin kiri */
+  padding: 20px;
+  display: flex;
+  justify-content: center;   /* Memusatkan secara horizontal */
+  align-items: center;       /* Memusatkan secara vertikal */
+  min-height: 100vh;         /* Pastikan tinggi penuh untuk pusat vertikal */
+  text-align: left;        /* Teks berada di tengah */
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: #2d2d44;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(110, 142, 251, 0.6);
+    }
+
+
+
+.container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center; /* Memusatkan teks */
+  animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    .container p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ddd;
+      text-align: justify;
+    }
+
+    .container img {
+      margin: 20px 0;
+      max-width: 70%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-divider {
+      border-top: 2px solid #6e8efb;
+      margin: 20px 0;
+    }
+
+    .question {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      background-color: #3a3a56;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+    
+    .container img {
+      margin: 20px 0;
+      max-width: 70%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #2d2d44;
+      padding: 20px 0;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+      margin-top: auto; /* Tetapkan footer di bagian bawah */
+    }
+
+    footer a {
+      color: #6e8efb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Lebar lebih kecil */
+  }
+
+  .menu-toggle {
+    left: 10px; /* Posisi tombol lebih dekat */
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+    max-width: 90%; /* Sesuaikan lebar kontainer */
+    box-shadow: none; /* Kurangi efek shadow untuk kesederhanaan */
+  }
+
+  .container h1 {
+    font-size: 2rem; /* Kurangi ukuran font */
+  }
+
+  .container p {
+    font-size: 1rem; /* Kurangi ukuran font paragraf */
+    line-height: 1.5;
+  }
+
+  .sidebar ul li a {
+    font-size: 1rem;
+    padding: 8px 15px; /* Kurangi padding */
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar/Navbar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">PELUANG</div>
+    <ul>
+      <li><a href="berandaa.html">Beranda</a></li>
+      <li><a href="tentangg.html">Materi</a></li>
+      <li><a href="coso.html">Contoh </a></li>
+      <li><a href="sohan.html">Latihan</a></li>
+      <li><a href="kupe.html">Kuis</a></li>
+      <li><a href="about.html">About</a></li>
+  </ul>
+    </ul>
+  </div>
+
+  <!-- Menu Toggle Button (Hamburger) -->
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+   <!-- Content Section -->
+  <div class="content">
+    <div class="container">
+      <h1>CONTOH SOAL</h1>
+
+      <!-- Soal 1 -->
+       <div class="question">
+        <p><br><strong>1. Pelemparan Dua Koin</strong></br></p>
+      </div>
+      <p>Dua koin dilempar sekaligus. Tentukan peluang munculnya tepat satu gambar!</p>
+      <div class="answer">
+        <p>Ruang sampel \( S \) untuk pelemparan dua koin adalah:</p>
+        <p>\( S = \{ (G, G), (G, A), (A, G), (A, A) \} \)</p>
+        <p>Jumlah kejadian yang mungkin = 4</p>
+        <p>Jumlah kejadian yang diharapkan (tepat satu gambar) = 2</p>
+        <p><strong>Peluang \( P \) adalah:</strong></p>
+        <p><strong>\( P = \frac{2}{4} = \frac{1}{2} \)<strong></p>
+      </div>
+      
+
+      <!-- Soal 2 -->
+      <div class="question">
+        <p><strong><br>2. Pelemparan Dadu</br></strong></p>
+      </div>
+      <p>Sebuah dadu dilempar sekali. Tentukan peluang munculnya bilangan prima!</p>
+      <div class="answer">
+        <p>Ruang sampel \( S = \{ 1, 2, 3, 4, 5, 6 \} \)</p>
+        <p>Bilangan prima = \( \{ 2, 3, 5 \} \)</p>
+        <p>Jumlah bilangan prima = 3</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{3}{6} = \frac{1}{2} \)</p>
+      </div>      
+      
+
+      <!-- Soal 3 -->
+      <div class="question">
+        <p><strong><br>3. Mengambil Kartu dari Dek</br></strong></p>
+      </div>
+      <p>Di dalam sebuah dek kartu terdapat 52 kartu. Berapakah peluang mengambil kartu As?</p>
+      <div class="answer">
+        <p>Jumlah total kartu = 52</p>
+        <p>Jumlah kartu As = 4</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{4}{52} = \frac{1}{13} \)</p>
+      </div>
+      
+
+      <!-- Soal 4 -->
+      <div class="question">
+        <p><strong><br>4. Mengambil Bola dari Kotak</br></strong></p>
+      </div>
+      <p>Sebuah kotak berisi 4 bola merah, 3 bola hijau, dan 5 bola biru. Berapakah peluang mengambil bola hijau?</p>
+      <div class="answer">
+        <p>Jumlah total bola = \( 4 + 3 + 5 = 12 \)</p>
+        <p>Jumlah bola hijau = 3</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{3}{12} = \frac{1}{4} \)</p>
+      </div>
+      
+
+      <!-- Soal 5 -->
+      <div class="question">
+        <p><strong><br>5. Mengambil Kelereng dari Kantong</br></strong></p>
+      </div>
+      <p>Di dalam kantong terdapat 6 kelereng merah, 2 kelereng biru, dan 4 kelereng kuning. Berapakah peluang mengambil kelereng biru?</p>
+      <div class="answer">
+        <p>Jumlah total kelereng = \( 6 + 2 + 4 = 12 \)</p>
+        <p>Jumlah kelereng biru = 2</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{2}{12} = \frac{1}{6} \)</p>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Peluang Kelas 8. Dibuat oleh <a href="about.html">Hartati Rintan (E1R022052)</a>.</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

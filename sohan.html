@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Kelas 8</title>
+  <style>
+    
+    /* Global Styles */
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(30, 30, 47, 0.7), rgba(30, 30, 47, 0.8)), 
+                url('good.jpg') no-repeat center center/cover;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    }  
+
+    h1, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+        /* Sidebar/Navbar Styles */
+        .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: #2d2d44;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 60px 20px 20px 20px; /* Padding untuk memberi ruang pada logo */
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+        box-sizing: border-box;
+        align-items: center; /* Menengahkan elemen-elemen di dalam sidebar secara horizontal */
+        }
+
+        .sidebar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 20px; /* Jarak antara logo dan menu */
+        background: linear-gradient(90deg, #6e8efb, #a777e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-bottom: 2px solid #fff; /* Garis pembatas bawah logo */
+        padding-bottom: 15px; /* Memberikan ruang setelah garis pembatas */
+        text-align: center; /* Menengahkan teks di dalam logo */
+        width: 100%; /* Memastikan logo mengisi lebar penuh sidebar */
+        }
+
+
+        .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .sidebar ul li {
+        margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+        font-size: 1.2rem;
+        color: #fff;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        transition: background 0.3s ease, transform 0.3s ease;
+        display: block;
+        border-radius: 5px;
+        box-sizing: border-box;
+        }
+
+        .sidebar ul li a:hover {
+        background: #6e8efb;
+        transform: scale(1.05);
+        }
+        /* Sidebar/Navbar Styles */
+        .sidebar {
+        width: 250px;
+      height: 100vh;
+      background: #2d2d44;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Sidebar tersembunyi di awal */
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0; /* Munculkan sidebar */
+    }
+
+    /* Menu Toggle Button (Hamburger) */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1002;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+    }
+
+/* Content Section */
+.content {
+      margin-left: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: left;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: #2d2d44;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6e8efb, #a777e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    .question {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      animation: slideIn 0.6s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(110, 142, 251, 0.6);
+    }
+
+    .answer {
+      background-color: #3a3a56;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+      display: none;
+      animation: reveal 0.5s ease-in-out;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .container p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ddd;
+      text-align: justify;
+    }
+
+    button {
+      background: #6e8efb;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #a777e3;
+      transform: scale(1.05);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #2d2d44;
+      padding: 20px 0;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+      margin-top: auto; /* Tetapkan footer di bagian bawah */
+    }
+
+    footer a {
+      color: #6e8efb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Lebar lebih kecil */
+  }
+
+  .menu-toggle {
+    left: 10px; /* Posisi tombol lebih dekat */
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+    max-width: 90%; /* Sesuaikan lebar kontainer */
+    box-shadow: none; /* Kurangi efek shadow untuk kesederhanaan */
+  }
+
+  .container h1 {
+    font-size: 2rem; /* Kurangi ukuran font */
+  }
+
+  .container p {
+    font-size: 1rem; /* Kurangi ukuran font paragraf */
+    line-height: 1.5;
+  }
+
+  .sidebar ul li a {
+    font-size: 1rem;
+    padding: 8px 15px; /* Kurangi padding */
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar/Navbar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">PELUANG</div>
+    <ul>
+        <li><a href="berandaa.html">Beranda</a></li>
+        <li><a href="tentangg.html">Materi</a></li>
+        <li><a href="coso.html">Contoh </a></li>
+        <li><a href="sohan.html">Latihan</a></li>
+        <li><a href="kupe.html">Kuis</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </ul>
+  </div>
+
+  <!-- Menu Toggle Button (Hamburger) -->
+  <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+   
+  <!-- Content Section -->
+  <div class="content">
+    <div class="container">
+      <h1>LATIHAN SOAL</h1>
+
+      <!-- Soal 1 -->
+      <div class="question">
+        <p><br>1. Dalam sebuah kantong terdapat 5 bola merah dan 7 bola hijau. Jika diambil satu bola secara acak, tentukan peluang bola yang terambil adalah bola merah!</br></p>
+      </div>
+      <button onclick="toggleAnswer(1)">Lihat Jawaban</button>
+      <div class="answer" id="answer-1">
+        <p>Jumlah total bola = \( 5 + 7 = 12 \)</p>
+        <p>Jumlah bola merah = 5</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{5}{12} \)</p>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="question">
+        <p><br>2. Sebuah dadu dilempar sekali. Tentukan peluang munculnya angka lebih dari 4!</ br></p>
+      </div>
+      <button onclick="toggleAnswer(2)">Lihat Jawaban</button>
+      <div class="answer" id="answer-2">
+        <p>Ruang sampel \( S = \{ 1, 2, 3, 4, 5, 6 \} \)</p>
+        <p>Angka lebih dari 4 = \{ 5, 6 \}</p>
+        <p>Jumlah kejadian = 2</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{2}{6} = \frac{1}{3} \)</p>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="question">
+        <p><br>3. Dalam sebuah dek kartu standar (52 kartu), berapakah peluang mengambil kartu King?</br></p>
+      </div>
+      <button onclick="toggleAnswer(3)">Lihat Jawaban</button>
+      <div class="answer" id="answer-3">
+        <p>Jumlah total kartu = 52</p>
+        <p>Jumlah kartu King = 4</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{4}{52} = \frac{1}{13} \)</p>
+      </div>
+
+   
+      <!-- Soal 4 -->
+      <div class="question">
+        <p><br>4. Dalam sebuah kelas terdapat 12 siswa laki-laki dan 18 siswa perempuan. Jika dipilih satu siswa secara acak, tentukan peluang yang terpilih adalah siswa perempuan!</br></p>
+      </div>
+      <button onclick="toggleAnswer(4)">Lihat Jawaban</button>
+      <div class="answer" id="answer-4">
+        <p>Jumlah total siswa = \( 12 + 18 = 30 \)</p>
+        <p>Jumlah siswa perempuan = 18</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{18}{30} = \frac{3}{5} \)</p>
+      </div>
+
+      <!-- Soal 5 -->
+      <div class="question">
+        <p><br>5. Sebuah koin dilempar sekali. Tentukan peluang munculnya sisi gambar!</br></p>
+      </div>
+      <button onclick="toggleAnswer(5)">Lihat Jawaban</button>
+      <div class="answer" id="answer-5">
+        <p>Ruang sampel \( S = \{ Kepala, Gambar \} \)</p>
+        <p>Jumlah kejadian gambar = 1</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{1}{2} \)</p>
+      </div>
+
+      <!-- Soal 6 -->
+      <div class="question">
+        <p><br>6. Sebuah kantong berisi 8 permen coklat, 10 permen rasa buah, dan 6 permen mint. Jika diambil satu permen secara acak, tentukan peluang yang terambil adalah permen coklat!</br></p>
+      </div>
+      <button onclick="toggleAnswer(6)">Lihat Jawaban</button>
+      <div class="answer" id="answer-6">
+        <p>Jumlah total permen = \( 8 + 10 + 6 = 24 \)</p>
+        <p>Jumlah permen coklat = 8</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{8}{24} = \frac{1}{3} \)</p>
+      </div>
+
+      <!-- Soal 7 -->
+      <div class="question">
+        <p><br>7. Dalam sebuah kotak terdapat 3 apel, 5 jeruk, dan 7 pisang. Jika diambil satu buah secara acak, tentukan peluang yang terambil adalah jeruk!</br></p>
+      </div>
+      <button onclick="toggleAnswer(7)">Lihat Jawaban</button>
+      <div class="answer" id="answer-7">
+        <p>Jumlah total buah = \( 3 + 5 + 7 = 15 \)</p>
+        <p>Jumlah jeruk = 5</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{5}{15} = \frac{1}{3} \)</p>
+      </div>
+
+      <!-- Soal 8 -->
+      <div class="question">
+        <p><br>8. Sebuah dadu standar dilempar dua kali. Tentukan peluang munculnya jumlah angka 7!</br></p>
+      </div>
+      <button onclick="toggleAnswer(8)">Lihat Jawaban</button>
+      <div class="answer" id="answer-8">
+        <p>Kombinasi pasangan yang menghasilkan jumlah 7: \((1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\)</p>
+        <p>Jumlah pasangan = 6</p>
+        <p>Total kemungkinan = 36</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{6}{36} = \frac{1}{6} \)</p>
+      </div>
+
+      <!-- Soal 9 -->
+      <div class="question">
+        <p><br>9. Sebuah undian memiliki 100 tiket, 5 di antaranya adalah tiket pemenang. Tentukan peluang untuk memenangkan undian jika Anda memiliki satu tiket!</br></p>
+      </div>
+      <button onclick="toggleAnswer(9)">Lihat Jawaban</button>
+      <div class="answer" id="answer-9">
+        <p>Jumlah total tiket = 100</p>
+        <p>Jumlah tiket pemenang = 5</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{5}{100} = \frac{1}{20} \)</p>
+      </div>
+
+      <!-- Soal 10 -->
+      <div class="question">
+        <p><br>10. Dalam sebuah tas terdapat 4 buku merah, 6 buku biru, dan 10 buku hijau. Jika diambil satu buku secara acak, tentukan peluang yang terambil adalah buku biru!</br></p>
+      </div>
+      <button onclick="toggleAnswer(10)">Lihat Jawaban</button>
+      <div class="answer" id="answer-10">
+        <p>Jumlah total buku = \( 4 + 6 + 10 = 20 \)</p>
+        <p>Jumlah buku biru = 6</p>
+        <p>Peluang \( P \) adalah:</p>
+        <p>\( P = \frac{6}{20} = \frac{3}{10} \)</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Peluang Kelas 8. Dibuat oleh <a href="about.html">Hartati Rintan (E1R022052)</a>.</p>
+  </footer>
+
+  <script>
+    function toggleAnswer(id) {
+      const answer = document.getElementById(`answer-${id}`);
+      if (answer.style.display === "none" || answer.style.display === "") {
+        answer.style.display = "block";
+      } else {
+        answer.style.display = "none";
+      }
+    }
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

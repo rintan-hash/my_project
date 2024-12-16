@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Kelas 8</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #1e1e2f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+
+   /* Sidebar/Navbar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #2d2d44;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 20px 20px; /* Padding untuk memberi ruang pada logo */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  box-sizing: border-box;
+  align-items: center; /* Menengahkan elemen-elemen di dalam sidebar secara horizontal */
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px; /* Jarak antara logo dan menu */
+  background: linear-gradient(90deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid #fff; /* Garis pembatas bawah logo */
+  padding-bottom: 15px; /* Memberikan ruang setelah garis pembatas */
+  text-align: center; /* Menengahkan teks di dalam logo */
+  width: 100%; /* Memastikan logo mengisi lebar penuh sidebar */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: block;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.sidebar ul li a:hover {
+  background: #6e8efb;
+  transform: scale(1.05);
+}
+ /* Sidebar/Navbar Styles */
+ .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #2d2d44;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Sidebar tersembunyi di awal */
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0; /* Munculkan sidebar */
+    }
+
+    /* Menu Toggle Button (Hamburger) */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1002;
+    }
+
+    .menu-toggle div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+    }
+
+/* Pembatas menggunakan hr */
+.divider {
+  border: 0;
+  border-top: 2px solid #fff; /* Garis pembatas */
+  margin: 20px 0; /* Memberikan jarak di atas dan bawah pembatas */
+}
+
+
+    .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      background: radial-gradient(circle, #2d2d44, #1e1e2f);
+      margin-top: 50px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      }
+      
+
+    .about-card {
+      background: linear-gradient(145deg, #2f3247, #1c1c2d);
+      border-radius: 20px;
+      box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5), -8px -8px 15px rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 900px;
+      overflow: hidden;
+      width: 100%;
+      
+    }
+
+    .about-photo {
+      flex: 1 1 300px;
+      position: relative;
+      background: linear-gradient(145deg, #24243a, #181828);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .about-photo img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+
+    .about-content {
+      flex: 2 1 400px;
+      padding: 30px;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6e8efb, #a777e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-content a {
+      align-self: start;
+      padding: 10px 20px;
+      background: #6e8efb;
+      color: #fff;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .about-content a:hover {
+      background: #a777e3;
+      transform: scale(1.1);
+    }
+
+    .connect-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background: #6e8efb;
+      color: #fff;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .connect-button:hover {
+      background: #a777e3;
+      transform: scale(1.1);
+    }
+
+    /* Education Table */
+    .education-table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      color: #ddd;
+    }
+
+    .education-table th, .education-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    .education-table th {
+      background: #2f3247;
+    }
+
+    .education-table tr:nth-child(even) {
+      background: #24243a;
+    }
+
+    .education-table tr:hover {
+      background: #3b3e56;
+    }
+
+    
+/* Footer Styles */
+footer {
+  background: #2d2d44;
+  padding: 20px 0;
+  text-align: center;
+  color: #ddd;
+  font-size: 0.9rem;
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+footer a {
+  color: #6e8efb;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsive Styles */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    display: none; /* Initially hide the sidebar */
+    position: absolute;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    display: block;
+    transform: translateX(0);
+  }
+
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+    margin-top: 80px; /* Give some space for the hamburger menu */
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002;
+  }
+
+  .menu-toggle div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+  }
+}
+  </style>
+</head>
+<body>
+
+ <!-- Sidebar/Navbar -->
+   
+ <div class="sidebar" id="sidebar">
+  <div class="logo">PELUANG</div>
+  <ul>
+    <li><a href="berandaa.html">Beranda</a></li>
+    <li><a href="tentangg.html">Materi</a></li>
+    <li><a href="coso.html">Contoh </a></li>
+    <li><a href="sohan.html">Latihan</a></li>
+    <li><a href="kupe.html">Kuis</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</div>
+
+<!-- Menu Toggle Button (Hamburger) -->
+<div class="menu-toggle" onclick="toggleSidebar()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+  <!-- About Section -->
+  <div class="about-section" id="about">
+    <div class="about-card">
+      <div class="about-photo">
+        <img src="rintan.jpg" alt="Your Name">
+      </div>
+      <div class="about-content">
+        <h1>ABOUT ME</h1>
+        <p>
+          Halo! Nama saya <strong>Hartati Rintan</strong> dengan NIM <strong>(E1R022052)</strong>, lahir di <strong>Pota</strong> pada tanggal <strong>11 Desember 2003</strong>. 
+          </p>
+          <p>Saat ini, saya sedang menempuh pendidikan sebagai mahasiswa <strong>Pendidikan Matematika (FKIP)</strong> di <strong>Universitas Mataram</strong>. Saya berasal dari daerah yang indah, yaitu <strong>Flores, Nusa Tenggara Timur (NTT)</strong>.
+          </p> 
+
+        <!-- Connect with Me Section -->
+        <div class="connect-container">
+          <h2>Connect with Me</h2>
+          <a href="https://www.instagram.com/hartati_rintan/" class="connect-button">Instagram</a>
+          <a href="https://www.youtube.com/@hartatirintan_052" class="connect-button">YouTube</a>
+          <a href="https://web.facebook.com/profile.php?id=100074921371972" class="connect-button">Facebook</a>
+          <a href="https://github.com/hartatirintan" class="connect-button">GitHub</a>
+        </div>
+        
+        <!-- Riwayat Pendidikan -->
+        <h2>Riwayat Pendidikan</h2>
+        <table class="education-table">
+          <thead>
+            <tr>
+              <th>Jenjang Pendidikan</th>
+              <th>Institusi</th>
+              <th>Tahun</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>S1</td>
+              <td>Universitas Mataram</td>
+              <td>2022 - Sekarang</td>
+            </tr>
+            <tr>
+              <td>SMK</td>
+              <td>SMK IT Global Al-Jabbar</td>
+              <td>2018 - 2021</td>
+            </tr>
+            <tr>
+              <td>SMP</td>
+              <td>SMP Negeri 2 Sambi Rampas</td>
+              <td>2015 - 2018</td>
+            </tr>
+            <tr>
+              <td>SD</td>
+              <td>SD Negeri Pota</td>
+              <td>2009 - 2015</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+   <!-- Menu Toggle Button (Hamburger) -->
+   <div class="menu-toggle" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Peluang Kelas 8. Dibuat oleh <a href="about.html">Hartati Rintan (E1R022052)</a>.</p>
+  </footer>
+  
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
